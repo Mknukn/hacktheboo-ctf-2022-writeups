@@ -2,7 +2,7 @@
 
 Checking the website:
 
-![Untitled](https://user-images.githubusercontent.com/86394721/198365266-d8fd7553-d179-47c7-8842-e203e2baa818.png)
+![image](https://user-images.githubusercontent.com/86394721/198368857-7095ea17-7326-444b-b416-7fb59a7a4fa6.png)
 
 
 It seems to change our name into spookified fonts. Reading the source code, I noticed in `utils.py` that they were using `mako.template` which has an SSTI vulnerability. From this [link](https://podalirius.net/en/articles/python-context-free-payloads-in-mako-templates/), we can do a simple recon if we can do SSTI with this following payload: `${self.module.cache.util.os}`.
@@ -13,7 +13,7 @@ Checking the source code, it seems that `font4` will be where our SSTI be reflec
 
 Trying the payload out:
 
-![Untitled 1](https://user-images.githubusercontent.com/86394721/198365326-ef880881-6b8c-4e9b-abd3-08afa623a513.png)
+![image](https://user-images.githubusercontent.com/86394721/198368864-844abde1-22f4-4620-83f5-ae528132e8b8.png)
 
 We have successful SSTI. After this, I just looked for a function within the `os` module that can print out our flag and I found `os.popen().read()`.
 
@@ -28,7 +28,7 @@ ${self.module.cache.util.os.popen('cat ../flag.txt').read()}
 
 Testing it out:
 
-![Untitled 2](https://user-images.githubusercontent.com/86394721/198365357-f041de2d-bd3c-4b1e-92d1-45cdbd415651.png)
+![image](https://user-images.githubusercontent.com/86394721/198368868-a02c5a14-74a5-4481-9f94-fb4ca61019e5.png)
 
 Our flag:
 

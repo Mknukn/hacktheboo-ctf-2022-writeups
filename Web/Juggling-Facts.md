@@ -2,11 +2,11 @@
 
 Checking the website:
 
-![Untitled](Juggling%20Facts%20d8258b0778774ae79dfa3b8ba6f9cd17/Untitled.png)
+![image](https://user-images.githubusercontent.com/86394721/198368738-cc4baddd-815a-4c50-bd5a-de1221c5eac9.png)
 
 When doing recon, we are calling `/api/getfacts` when we’re clicking for facts related to the pumpkins:
 
-![Untitled](Juggling%20Facts%20d8258b0778774ae79dfa3b8ba6f9cd17/Untitled%201.png)
+![image](https://user-images.githubusercontent.com/86394721/198368747-533754ef-ab15-459c-9d2b-55be6b892db0.png)
 
 From the name of the challenge itself, we will be dealing with Type Juggling which is a feature in PHP which lets there be no need to explicitly define the ****type**** of any variable you declare, PHP will automatically convert the data into a common, comparable type.
 
@@ -61,13 +61,13 @@ Since `'secrets'` is in the up, we can actually do loose comparison matching her
 
 Luckily for us, we have this table that comes in handy for loose comparisons:
 
-![Untitled](Juggling%20Facts%20d8258b0778774ae79dfa3b8ba6f9cd17/Untitled%202.png)
+![image](https://user-images.githubusercontent.com/86394721/198368751-196b7720-344e-462b-9bc7-d6e3d63d72cd.png)
 
 We can then make our switch case true by supplying in `true` to our `type` parameter.
 
 Testing it out:
 
-![Untitled](Juggling%20Facts%20d8258b0778774ae79dfa3b8ba6f9cd17/Untitled%203.png)
+![image](https://user-images.githubusercontent.com/86394721/198368756-2e33e0d0-b177-4766-841c-1ab11f4c4daa.png)
 
 Our flag:
 

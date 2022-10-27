@@ -2,11 +2,11 @@
 
 Checking the website:
 
-![Untitled](Evaluation%20Deck%208a5eba61e1624f6c9dbf55456eea0eb7/Untitled.png)
+![image](https://user-images.githubusercontent.com/86394721/198368558-e76ca561-0d22-4fea-87f5-468b561ecf4b.png)
 
 When we try to play any cards here, it decreases the health of the ghost we are fighting. On the background, what’s actually happening is we are actually calling the `/api/get_health` endpoint:
 
-![Untitled](Evaluation%20Deck%208a5eba61e1624f6c9dbf55456eea0eb7/Untitled%201.png)
+![image](https://user-images.githubusercontent.com/86394721/198368569-8c0be456-5a90-4b5a-a628-5418b2a0a87b.png)
 
 We are passing in the `current_health` of the ghost, the `attack_power` if the card we flipped, and the `operator` of what operation we will do on this.
 
@@ -52,7 +52,7 @@ We are calling the `compile()` function which compiles the source code which is 
 
 From here, what I initially did was do a recreation and play around with the result in my local machine:
 
-![Untitled](Evaluation%20Deck%208a5eba61e1624f6c9dbf55456eea0eb7/Untitled%202.png)
+![image](https://user-images.githubusercontent.com/86394721/198368586-4533a671-2dd4-4944-afc7-a44c4bcac9ea.png)
 
 From the screenshot above, we are generating a `code` object which has tons of other information. We also have the final `result` which is stored in the key `result`.
 
@@ -60,11 +60,11 @@ From the code snippet provided above, we can see that `attack_power` and `curren
 
 We also have to remember that the `exec` function executes code as a sequence of statements. This means we can do command injection on the endpoint:
 
-![Untitled](Evaluation%20Deck%208a5eba61e1624f6c9dbf55456eea0eb7/Untitled%203.png)
+![image](https://user-images.githubusercontent.com/86394721/198368596-986c238b-cc10-4818-9767-b9a3fb621c7c.png)
 
 But this doesn’t help us since when we try to replicate this type of payload on the web app, we are getting back the result of our code which is `0` since `os.system` returns a `0` value when the code execution was done properly:
 
-![Untitled](Evaluation%20Deck%208a5eba61e1624f6c9dbf55456eea0eb7/Untitled%204.png)
+![image](https://user-images.githubusercontent.com/86394721/198368608-c52e5a0e-461e-40c6-a82b-6d5d0a0a9e40.png)
 
 After a day of frustration, I cleared my head. Since the web app stores our result as a value in the `result` key, why not just add another value in there?
 
@@ -87,7 +87,7 @@ Our finally payload will now be:
 
 Testing it out:
 
-![Untitled](Evaluation%20Deck%208a5eba61e1624f6c9dbf55456eea0eb7/Untitled%205.png)
+![image](https://user-images.githubusercontent.com/86394721/198368617-acda2725-b683-401c-9337-520b940e85ad.png)
 
 Our flag:
 
